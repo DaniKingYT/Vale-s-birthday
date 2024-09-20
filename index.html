@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vale's Party</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script src="https://code.jquery.com/ui/1.14.0/jquery-ui.js"></script>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div class="home">
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <br><br><br><br>
+                <center>
+                    <h1>¡Has sido invitado a<br>la fiesta de Valentina!</h1>
+                </center>
+                <img src="https://seeklogo.com/images/S/stitch-happy-logo-61A5F44FEE-seeklogo.com.png" id="stitch" alt="">
+              </div>
+              <div class="swiper-slide">
+                <br><br>
+                <center>
+                    <h1>
+                        No sabes lo emocionados<br>que estamos al igual que tu.
+                    </h1>
+                </center>
+                <img src="./lilo&stitch.png" id="musicstitch" alt="">
+              </div>
+              <div class="swiper-slide">
+                <br><br>
+                <center>
+                    <h1>
+                        Te aseguramos que esta <br>fiesta va a ser mágica.
+                        <a id="add_to_calendar" href="./agregar a calendario.ics" target="_blank" rel="noopener noreferrer">
+                            <p>
+                                Recuerdame en el Calendario!
+                            </p>
+                        </a>
+                    </h1>
+                </center>
+              </div>
+              <div class="swiper-slide">
+                <br><br>
+                <center>
+                    <h1>¡Este tiempo es el que queda!</h1>
+                    <p>
+                        (Te recomendamos ir buscando un regalo!)
+                    </p>
+
+                    <br><br><br>
+                    <h1 id="contador"></h1>
+                </center>
+              </div>
+              <div class="swiper-slide">
+                <br><br>
+                <center>
+                    <h1>¡A Stitch le gustan los regalos!</h1>
+                    <p>Al igual que a Vale. ¿Por qué no te ayudamos<br>a encontrar alguno? <h6 style="color: tomato;">* puedes regalar otra cosa que no este en la lista.</h6></p>
+                </center>
+                <a href="https://www.amazon.com.mx/registries/gl/guest-view/1S9AX0A1GXNLU" id="amazon_gifts" target="_blank" rel="noopener noreferrer">
+                    <p>Regalos que le gustarian a Vale & Stitch</p>
+                </a>
+                </div>
+              <div class="swiper-slide">
+                <br><br>
+                <center>
+                    <h1>¡Ah!, ¡Que no sabes donde es!</h1>
+                    <p>La fiesta será en el palacio de Vale</p>
+                    <a href="https://maps.app.goo.gl/A5KbZvw1mVJgcuno7?g_st=ac" id="amazon_gifts" target="_blank" rel="noopener noreferrer">
+                        <p>Aquí es. ¡No te olvides!</p>
+                    </a>
+                </center>
+              </div>
+              <div class="swiper-slide">
+                <br><br>
+                <center>
+                    <h1>¡Te esperamos!</h1>
+                    <p>¡Te faltes!</p>
+                </center>
+              </div>
+            </div>
+            <div class="swiper-pagination"></div>
+          </div>
+    </div>
+    <div class="loading">
+        <h1>
+            Cargando...
+        </h1>
+        <img src="./loading.gif" alt="">
+    </div>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <script>
+        setTimeout(() => {
+            document.querySelector('.loading').style.top = '-100%';
+        }, 3000);
+        var swiper = new Swiper(".mySwiper", {
+      direction: "vertical",
+        pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+        },
+       });
+       // Establece la fecha para la cuenta regresiva
+       const fechaObjetivo = new Date("September 21, 2024 00:00:00").getTime();
+
+// Actualiza el contador cada segundo
+const cuentaRegresiva = setInterval(() => {
+    const fechaActual = new Date().getTime();
+
+    // Calcula la diferencia entre la fecha objetivo y la fecha actual
+    const distancia = fechaObjetivo - fechaActual;
+
+    // Calcula días, horas, minutos y segundos
+    const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
+    const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+    const segundos = Math.floor((distancia % (1000 * 60)) / 1000);
+
+    // Muestra el resultado en el elemento con id "contador"
+    document.getElementById("contador").innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+
+    // Si la cuenta regresiva ha terminado
+    if (distancia < 0) {
+        clearInterval(cuentaRegresiva);
+        document.getElementById("contador").innerHTML = "¡La cuenta regresiva ha terminado!";
+    }
+}, 1000);
+    </script>
+    <style>
+        
+    </style>
+</body>
+</html>
